@@ -7,7 +7,6 @@ skip_commits:
 
 
 install:
-  - cmd: dir /s c:\projects\cmicrosoftupdate
   - cinst pester
   - git clone https://github.com/ltrain777/cMicrosoftUpdate "C:\Program Files\WindowsPowerShell\Modules\cMicrosoftUpdate"
   - ps: winrm quickconfig -force
@@ -15,7 +14,7 @@ install:
 build: false
  
 test_script:
-  - cmd: dir /s "C:\Program Files\WindowsPowerShell\Modules\cMicrosoftUpdate"
+  - ps: ipmo cMicrosoftUpdate
 # Test with native PS version, finalize
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize
  

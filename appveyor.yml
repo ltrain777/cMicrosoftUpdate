@@ -8,7 +8,7 @@ skip_commits:
 
 install:
   - cinst pester
-  - git clone https://github.com/fabiendibot/cMicrosoftUpdate "C:\Program Files\WindowsPowerShell\Modules\cMicrosoftUpdate"
+  - git clone https://github.com/ltrain777/cMicrosoftUpdate "C:\Program Files\WindowsPowerShell\Modules\cMicrosoftUpdate"
   - ps: winrm quickconfig -force
 
 build: false

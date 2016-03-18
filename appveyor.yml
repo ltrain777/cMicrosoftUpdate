@@ -15,7 +15,8 @@ build: false
  
 test_script:
   - ps: $env:PSModulePath = "C:\Users\appveyor\Documents\WindowsPowerShell\Modules;C:\Users\appveyor\Documents\WindowsPowerShell\Modules;C:\windows\system32\WindowsPowerShell\v1.0\Modules\;C:\Program Files (x86)\Microsoft SQL Server\110\Tools\PowerShell\Modules\;C:\Program Files (x86)\Microsoft SQL Server\120\Tools\PowerShell\Modules\;C:\Program Files\Workflow Manager\1.0\;C:\Program Files\Service Bus\1.1\;C:\Program Files (x86)\AWS Tools\PowerShell\;C:\Program Files\AppVeyor\BuildAgent\Modules;C:\Program Files\WindowsPowerShell\Modules\;C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ResourceManager\AzureResourceManager\;C:\Program Files (x86)\Microsoft SDKs\Azure\PowerShell\ServiceManagement\"
-  - ps: Get-Module -ListAvailable -Name cMicrosoftUpdate | fl
+# Invoke DSC configuration!
+  - ps: . .\Tests\appveyor.ps1
 # Test with native PS version, finalize
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize
  

@@ -48,9 +48,9 @@ param(
         #What failed?
             $Results = @( Get-ChildItem -Path "$ProjectRoot\PesterResultsPS*.xml" | Import-Clixml )
             $Results
-            $FailedCount = $Results |
-                Select -ExpandProperty FailedCount |
-                Measure-Object -Sum |
+            $FailedCount = $Results | 
+                Select -exp FailedCount -EA SilentlyContinue | 
+                Measure-Object -Sum | 
                 Select -ExpandProperty Sum
     
             if ($FailedCount -gt 0) {

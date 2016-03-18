@@ -14,7 +14,7 @@ install:
 build: false
  
 test_script:
-  - ps: Get-Module -ListAvailable -Name cMicrosoftUpdate
+  - ps: Get-Module -ListAvailable -Name cMicrosoftUpdate | fl
   - ps: $env:PSModulePath
 # Test with native PS version, finalize
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize

@@ -5,7 +5,10 @@
 
 Enable-PSRemoting -Force
 
-. .\Tests\WSUSConfig.ps1
+. .\Tests\WSUSConfig.ps1 -UseWUServer "True" -WSUSServerEnsure "Present" -WSUSServerUrl "http://127.0.0.1:8080" -WSUSModeEnsure "Present" -WSUSMode "Notify" `
+                         -TargetGroupEnsure "Present" -TargetGroup "DMZPrivate" -WSUSNoAccessEnsure "Present" -WSUSNoAccess "False" `
+                         -WSUSNoAutoRebootLoggedOnUserEnsure "Present" -WSUSNoAutoRebootLoggedOnUser "False" -WSUSNoAutoUpdateEnsure "Present" -WSUSNoAutoUpdate "False" `
+                         -WSUSInstallDayEnsure "Present" -WSUSInstallDay "Monday"
  
 ( TestWSUS ).FullName | Set-Content -Path .\Artifacts.txt
  

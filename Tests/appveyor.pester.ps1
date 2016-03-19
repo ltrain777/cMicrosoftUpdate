@@ -23,6 +23,8 @@ param(
 
         Invoke-Pester -Path "$ProjectRoot\Tests" -OutputFormat NUnitXml -OutputFile "$ProjectRoot\$TestFile" -PassThru |
             Export-Clixml -Path "$ProjectRoot\PesterResultsPS$PSVersion.xml"
+        
+        (Get-Item .\TestWSUS\*.*).FullName | Set-Content -Path .\Artifacts.txt
     }
 
 #If finalize is specified, check for failures and 

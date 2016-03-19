@@ -15,7 +15,7 @@ build: false
  
 test_script:
 # Remove duplicate path entry causing Module Not found error
-  - ps: $env:PSModulePath -replace "C:\\Program Files\\WindowsPowerShell\\Modules\\"
+  - ps: $m = "C:\\Program Files\\WindowsPowerShell\\Modules\\"; $modPath = $env:PSModulePath -replace $m; $env:PSModulePath = $modPath;
 # Test with native PS version, finalize
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize
  

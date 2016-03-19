@@ -21,4 +21,5 @@ test_script:
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize
  
 deploy_script:
+  - ps: Get-Content .\Artifacts.txt
   - ps: Get-Content .\Artifacts.txt | Foreach-Object { Push-AppveyorArtifact $_ }

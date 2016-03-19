@@ -64,7 +64,7 @@ Describe "Validate your Default WSUS Configuration" {
                          -WSUSNoAutoRebootLoggedOnUserEnsure "Absent" -WSUSNoAutoRebootLoggedOnUser "False" -WSUSNoAutoUpdateEnsure "Absent" -WSUSNoAutoUpdate "False" `
                          -WSUSInstallDayEnsure "Absent" -WSUSInstallDay "Monday"
 
-Copy-Item "$ProjectRoot\TestWSUS\localhost.mof" "$ProjectRoot\Artifacts\Test1.mof" -Force
+Copy-Item "$ProjectRoot\TestWSUS\localhost.mof" "$ProjectRoot\Artifacts\Test2.mof" -Force
 
 Describe "Validate your Default WSUS Configuration" {
     

@@ -21,10 +21,14 @@ param(
     
         Import-Module Pester
 
+        if(!(Test-Path "$ProjectRoot\Artifacts")){
+            New-Item "$ProjectRoot\Artifacts" -ItemType Directory
+        }
+
         Invoke-Pester -Path "$ProjectRoot\Tests" -OutputFormat NUnitXml -OutputFile "$ProjectRoot\$TestFile" -PassThru |
             Export-Clixml -Path "$ProjectRoot\PesterResultsPS$PSVersion.xml"
         
-        (Get-Item .\TestWSUS\*.*).FullName | Set-Content -Path .\Artifacts.txt
+        (Get-Item "$ProjectRoot\Artifacts\*.*").FullName | Set-Content -Path "$ProjectRoot\Artifacts.txt"
     }
 
 #If finalize is specified, check for failures and 

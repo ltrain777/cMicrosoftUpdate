@@ -1,9 +1,14 @@
-﻿$here = Split-Path -Parent $MyInvocation.MyCommand.Path
+﻿if(!(Test-Path "$ProjectRoot\Artifacts")){
+    New-Item "$ProjectRoot\Artifacts" -ItemType Directory
+}
+
+$here = Split-Path -Parent $MyInvocation.MyCommand.Path
 . "$here\WSUSConfig.ps1" -UseWUServer "True" -WSUSServerEnsure "Present" -WSUSServerUrl "http://127.0.0.1:8080" -WSUSModeEnsure "Present" -WSUSMode "Notify" `
                          -TargetGroupEnsure "Present" -TargetGroup "DMZPrivate" -WSUSNoAccessEnsure "Present" -WSUSNoAccess "False" `
                          -WSUSNoAutoRebootLoggedOnUserEnsure "Present" -WSUSNoAutoRebootLoggedOnUser "False" -WSUSNoAutoUpdateEnsure "Present" -WSUSNoAutoUpdate "False" `
                          -WSUSInstallDayEnsure "Present" -WSUSInstallDay "Monday"
 
+Copy-Item "$ProjectRoot\TestWSUS\localhost.mof" "$ProjectRoot\Artifacts\Test1.mof" -Force
 
 Describe "Validate your Default WSUS Configuration" {
     
@@ -59,6 +64,7 @@ Describe "Validate your Default WSUS Configuration" {
                          -WSUSNoAutoRebootLoggedOnUserEnsure "Absent" -WSUSNoAutoRebootLoggedOnUser "False" -WSUSNoAutoUpdateEnsure "Absent" -WSUSNoAutoUpdate "False" `
                          -WSUSInstallDayEnsure "Absent" -WSUSInstallDay "Monday"
 
+Copy-Item "$ProjectRoot\TestWSUS\localhost.mof" "$ProjectRoot\Artifacts\Test1.mof" -Force
 
 Describe "Validate your Default WSUS Configuration" {
     

@@ -14,7 +14,7 @@ install:
 build: false
  
 test_script:
-  - ps: { $env:PSModulePath; $m = "C:\\Program Files\\WindowsPowerShell\\Modules\\"; $modPath = $env:PSModulePath -replace $m; $env:PSModulePath = $modPath;$m }
+  - ps: $env:PSModulePath; $m = "C:\\Program Files\\WindowsPowerShell\\Modules\\"; $modPath = $env:PSModulePath -replace $m; $env:PSModulePath = $modPath;$m
 # Test with native PS version, finalize
   - ps: . .\Tests\appveyor.pester.ps1 -Test -Finalize
  

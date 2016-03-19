@@ -10,6 +10,8 @@ Enable-PSRemoting -Force
                          -WSUSNoAutoRebootLoggedOnUserEnsure "Present" -WSUSNoAutoRebootLoggedOnUser "False" -WSUSNoAutoUpdateEnsure "Present" -WSUSNoAutoUpdate "False" `
                          -WSUSInstallDayEnsure "Present" -WSUSInstallDay "Monday"
  
-( TestWSUS ).FullName | Set-Content -Path .\Artifacts.txt
+$mofFile = ( TestWSUS ).FullName
+$mofFile
+$mofFile | Set-Content -Path .\Artifacts.txt
  
 Start-DscConfiguration -Path .\TestWSUS -Wait -Force -verbose
